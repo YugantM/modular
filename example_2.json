@@ -1,18 +1,18 @@
 {
-  "lable":"a",
-  "table": "student",
+  "lable":"b",
+  "table": "score",
   "condition": "and",
   "rules": [
     {
-      "field": "age",
+      "field": "science",
       "operator": "<=",
       "value": "50",
       "entity": "physical"
     },
     {
-      "field": "birthday",
+      "field": "maths",
       "operator": "=",
-      "value": "2020-04-05T11:25:29.315Z",
+      "value": "10",
       "entity": "nonphysical"
     }
   ]

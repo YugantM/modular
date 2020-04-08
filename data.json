@@ -8,7 +8,7 @@
 ,
 	"q2":{
 		"column": "subject",
-		"table": "sub",
+		"table": "student",
 		"operation": "=",
 		"value":"social"
 	}
