@@ -1,0 +1,27 @@
+{
+	"table1":{
+		"or": [{CONDITION},{CONDITION},{CONDITION}],
+		"and": [{CONDITION},{CONDITION}]
+	},
+	
+	"table2":{
+		"or": [{CONDITION}],
+		"and": [{CONDITION},{CONDITION}]
+
+	},
+	
+	"table3":{
+		"or": [{CONDITION}],
+		"and": [{CONDITION}]
+	}
+}
+
+
+
+#conditions = rules 
+
+{
+	"field": "",
+	"operator": " ",
+	"value": " ",
+}
