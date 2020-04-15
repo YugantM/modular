@@ -19,6 +19,7 @@
         {
           "field": "gender",
           "operator": "=",
+          "value":"male",
           "entity": "physical"
         },
         {
@@ -34,6 +35,7 @@
         {
           "field": "notes",
           "operator": "=",
+          "value":"false",
           "entity": "nonphysical"
         },
         {
@@ -43,54 +45,7 @@
       ]
     }
   ]
-},
-
-"customer":{
-
-"condition": "and",
-  "rules": [
-    {
-      "field": "age",
-      "operator": "<=",
-      "entity": "physical"
-    },
-    {
-      "field": "birthday",
-      "operator": "=",
-      "value": "2020-04-06T12:23:29.201Z",
-      "entity": "nonphysical"
-    },
-    {
-      "condition": "or",
-      "rules": [
-        {
-          "field": "gender",
-          "operator": "=",
-          "entity": "physical"
-        },
-        {
-          "field": "occupation",
-          "operator": "in",
-          "entity": "nonphysical"
-        },
-        {
-          "field": "school",
-          "operator": "is null",
-          "entity": "nonphysical"
-        },
-        {
-          "field": "notes",
-          "operator": "=",
-          "entity": "nonphysical"
-        },
-        {
-          "condition": "and",
-          "rules": []
-        }
-      ]
-    }
-  ]
-  
 }
+
 
 }
