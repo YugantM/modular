@@ -2,9 +2,11 @@
 # coding: utf-8
 
 # In[99]:
+from flask import Flask, request, redirect, url_for, flash,send_from_directory
 
 
 import json,sys
+from werkzeug.utils import secure_filename
 
 
 # In[100]:
@@ -34,11 +36,9 @@ with open('main.json', encoding='utf-8') as fh:
 """with open('tables_with_attributes.txt', encoding='utf-8') as fx:
     data2 = json.load(fx)
 """
-# API endpoint will be here
-link = "localhost:3000/table_with_attributes"
-with urllib.request.urlopen(link) as url:
-    data2 = json.loads(url.read().decode())
-    
+
+
+
 
 # In[336]:
 
@@ -46,14 +46,15 @@ with urllib.request.urlopen(link) as url:
 def check_lists(list1,list2):
     return list(set(list1)&set(list2))
 
-#Read data from stdin
+'''#Read data from stdin
 def read_in():
     lines = sys.stdin.readlines()
     # Since our input would only be having one line, parse our JSON data from that
     return json.loads(lines[0])  
+'''
 
 
-def main():
+def foo(data,data2):
 
     data = read_in()
 
@@ -276,7 +277,36 @@ def main():
         #print("Generated Query:"+"\n"+query)
         return query
 
-# Start process
+'''# Start process
 if __name__ == '__main__':
     main()
+'''
 
+
+app = Flask(__name__)
+
+
+@app.route("/sql_generate", methods=['GET', 'POST'])
+def generate_query():
+
+    global data,data2
+    if request.method == 'POST':
+        data = request.json
+        '''data = json.load(f)
+                                print(request)'''
+
+    # API endpoint will be here
+    link = "localhost:3000/table_with_attributes"
+    with urllib.request.urlopen(link) as url:
+        data2 = json.loads(url.read().decode())
+
+
+    return foo(data,data2)   
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0',debug=True)
+
+
+
+#app.run()
