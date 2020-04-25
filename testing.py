@@ -3,11 +3,12 @@ import requests,json
 url = 'http://127.0.0.1:5000/sql_generate'
 
 
-with open('main.json', encoding='utf-8') as fh:
+with open('main.json') as fh:
     da = json.load(fh)
 
-x = requests.post(url, json = da)
+da = json.dumps(da)
+x = requests.post(url, params = da)
 
 #print(da,'\n\n')
 
-print('hello')
+print(x.text)

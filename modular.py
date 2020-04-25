@@ -21,6 +21,7 @@ from collections import Counter
 import pandas as pd
 
 
+
 import urllib.request
 
 # In[334]:
@@ -33,9 +34,6 @@ with open('main.json', encoding='utf-8') as fh:
 # In[335]:
 
 
-"""with open('tables_with_attributes.txt', encoding='utf-8') as fx:
-    data2 = json.load(fx)
-"""
 
 
 
@@ -56,7 +54,8 @@ def read_in():
 
 def foo(data,data2):
 
-    data = read_in()
+    
+    print(data)
 
     #defining columns
     cols =["table","condition","field","operator","value"]
@@ -286,22 +285,29 @@ if __name__ == '__main__':
 app = Flask(__name__)
 
 
-@app.route("/sql_generate", methods=['GET', 'POST'])
+@app.route("/sql_generate", methods=['POST','GET'])
 def generate_query():
 
     global data,data2
     if request.method == 'POST':
         data = request.json
-        '''data = json.load(f)
-                                print(request)'''
+    data = json.load(data)
+   
+    #data = json.load(f)
+    #print(request)
 
     # API endpoint will be here
-    link = "localhost:3000/table_with_attributes"
-    with urllib.request.urlopen(link) as url:
-        data2 = json.loads(url.read().decode())
+    '''    link = "localhost:3000/table_with_attributes"
+        with urllib.request.urlopen(link) as url:
+            data2 = json.loads(url.read().decode())
+    '''
 
 
-    return foo(data,data2)   
+    with open('tables_with_attributes.txt', encoding='utf-8') as fx:
+        data2 = json.load(fx)
+
+    #return foo(data,data2)   
+    return str(data)
 
 
 if __name__ == '__main__':
