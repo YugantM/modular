@@ -33,12 +33,14 @@ with open('main.json', encoding='utf-8') as fh:
 
 # In[335]:
 
+global response_json
+response_json = {'query':'',
+                 'error':''}
 
 
 
-
-
-# In[336]:
+response_json = json.dumps(response_json)
+response_json = json.loads(response_json)
 
 
 def check_lists(list1,list2):
@@ -206,7 +208,7 @@ def foo(data,data2):
         #ending query with ":"
         query = query+ ";"
 
-        return query
+        return str(query)
         
     # query with more than two table
     else:
@@ -291,8 +293,9 @@ def generate_query():
     global data,data2
     if request.method == 'POST':
         data = request.json
-    data = json.load(data)
-   
+    data = json.dumps(data)
+    
+
     #data = json.load(f)
     #print(request)
 
