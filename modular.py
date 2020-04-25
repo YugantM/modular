@@ -293,7 +293,8 @@ def generate_query():
     global data,data2
     if request.method == 'POST':
         data = request.json
-    data = json.dumps(data)
+    data = json.dumps(data['body'])
+
     
 
     #data = json.load(f)
@@ -309,8 +310,8 @@ def generate_query():
     with open('tables_with_attributes.txt', encoding='utf-8') as fx:
         data2 = json.load(fx)
 
-    #return foo(data,data2)   
-    return str(data)
+    return foo(data,data2)   
+    #return str(data)
 
 
 if __name__ == '__main__':
