@@ -76,6 +76,9 @@ def foo(data,data2):
         #sample is variable which holds the value from the given key 
         #updated as loop goes through the JSON tree
         sample = data[each_key]
+
+        return sample
+
         
         #loop for travelling through tree structure/ tunneling down
         while 1>0:
@@ -246,7 +249,7 @@ def foo(data,data2):
         for row_number in list(main_frame.index):
             col_list = col_list + main_frame.iloc[row_number]['reference'] + '.' + main_frame.iloc[row_number]['field'] + ','
 
-        return ''.join([each for each in col_list])
+
         #removing the last coma from the col_list
         #app.logger(col_lists)
         col_list = col_list[:-1]
