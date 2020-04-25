@@ -59,6 +59,9 @@ def read_in():
 def foo(data,data2):
 
     
+    with open('output.json', encoding='utf-8') as fx:
+        data = json.load(fx)
+
     print(data)
 
     #defining columns
@@ -251,6 +254,7 @@ def foo(data,data2):
             col_list = col_list + main_frame.iloc[row_number]['reference'] + '.' + main_frame.iloc[row_number]['field'] + ','
 
         #removing the last coma from the col_list
+        #app.logger(col_lists)
         col_list = col_list[:-1]
         
         #adding other kwywords and table name
@@ -295,11 +299,11 @@ def generate_query():
     global data,data2
     if request.method == 'POST':
         data = request.json
-#    data = json.dumps(data)
- #   data = json.loads(data)
+    data = json.dumps(data)
+    data = json.dumps(data)
     #data = data['body']
 
-    
+    #data = str(data)
 
     #data = json.load(f)
     #print(request)
@@ -310,12 +314,18 @@ def generate_query():
             data2 = json.loads(url.read().decode())
     '''
 
+    data = "".join([each for each in data])
+
+    data = json.loads(data)
+    with open("output.json", "w") as text_file:
+        text_file.write(data)
+        text_file.close()
 
     with open('tables_with_attributes.txt', encoding='utf-8') as fx:
         data2 = json.load(fx)
 
     return foo(data,data2)
-    #return str(type(data))
+    #return data
 
 
 if __name__ == '__main__':
