@@ -62,13 +62,13 @@ def foo(data,data2):
     with open('output.json', encoding='utf-8') as fx:
         data = json.load(fx)
 
-    print(data)
+
+#    print(data)
 
     #defining columns
     cols =["table","condition","field","operator","value"]
     #creating main dataframe for back-end
     main_frame = pd.DataFrame(columns=cols)
-
     #loop through all the main-keys(tables) from the JSON recieved
 
     for each_key in list(data.keys()):
@@ -114,10 +114,9 @@ def foo(data,data2):
                 main_frame['value'] = "\"" + main_frame['value'] + "\""
                 #converting all the conditions to uppercase
                 main_frame['condition'] = main_frame['condition'].str.upper()
-                break
-     
+                break 
 
-     #Labelling the tables
+    #Labelling the tables
     #defining columns
     cols =["table","reference"]
     #creating labelld tables list for back-end
@@ -136,7 +135,6 @@ def foo(data,data2):
         labelld_tables['reference'].iloc[each_table] = chr(each_table+97)
 
     main_frame = pd.merge(main_frame,labelld_tables,how='left', on=['table'])
-    main_frame
 
 
     # In[338]:
@@ -158,10 +156,7 @@ def foo(data,data2):
         #appending temp dataframe to main dataframe
         table_frame = table_frame.append(temp,ignore_index=True,verify_integrity=True)
 
-    #table_frame
 
-
-    # In[339]:
 
 
     join_frame = pd.DataFrame(columns=list(table_frame['table']),index=list(table_frame['table']))
@@ -172,9 +167,7 @@ def foo(data,data2):
 
     #join_frame
 
-
     # In[340]:
-
 
 
 
@@ -253,6 +246,7 @@ def foo(data,data2):
         for row_number in list(main_frame.index):
             col_list = col_list + main_frame.iloc[row_number]['reference'] + '.' + main_frame.iloc[row_number]['field'] + ','
 
+        return ''.join([each for each in col_list])
         #removing the last coma from the col_list
         #app.logger(col_lists)
         col_list = col_list[:-1]
@@ -329,7 +323,7 @@ def generate_query():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',debug=False)
+    app.run(host='0.0.0.0',debug=True)
 
 
 
