@@ -316,10 +316,10 @@ def generate_query():
     #print(request)
 
     # API endpoint will be here
-    link = "localhost:3000/table_with_attributes"
-    with urllib.request.urlopen(link) as url:
-        data2 = json.loads(url.read().decode())
-    
+    '''link = "localhost:3000/table_with_attributes"
+                with urllib.request.urlopen(link) as url:
+                    data2 = json.loads(url.read().decode())
+                '''
 
     data = "".join([each for each in data])
 
@@ -327,10 +327,10 @@ def generate_query():
     with open("output.json", "w") as text_file:
         text_file.write(data)
         text_file.close()
-'''
+
     with open('tables_with_attributes.txt', encoding='utf-8') as fx:
         data2 = json.load(fx)
-'''
+
     data = jsonify(data)
     return foo(data,data2)
     #return data
