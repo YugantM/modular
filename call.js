@@ -1,6 +1,6 @@
 var request = require("request")
 
-var jsondata = require("./output.json");
+var jsondata = require("./main.json");
 
 request.post({
     "headers": { "content-type": "application/json" },
