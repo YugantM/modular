@@ -4,7 +4,7 @@
 # In[99]:
 import logging
 from logging.handlers import RotatingFileHandler
-from flask import Flask, request, redirect, url_for, flash,send_from_directory
+from flask import Flask, request, redirect, url_for, flash,send_from_directory,jsonify
 
 
 import json,sys
@@ -62,7 +62,7 @@ def foo(data,data2):
     with open('output.json', encoding='utf-8') as fx:
         data = json.load(fx)
 
-
+    data = data['jsondata']
 #    print(data)
 
     #defining columns
@@ -77,7 +77,15 @@ def foo(data,data2):
         #updated as loop goes through the JSON tree
         sample = data[each_key]
 
-        return sample
+
+        '''    for i in range(len(each_key)):
+            
+                        if i== len(each_key):
+            
+                            break
+                        i = i+1
+                        return sample
+            '''
 
         
         #loop for travelling through tree structure/ tunneling down
@@ -245,6 +253,8 @@ def foo(data,data2):
         #starting the query with "select"
         query = keywords[0]
         
+        
+
         #loop to append column names to col_list
         for row_number in list(main_frame.index):
             col_list = col_list + main_frame.iloc[row_number]['reference'] + '.' + main_frame.iloc[row_number]['field'] + ','
@@ -321,6 +331,7 @@ def generate_query():
     with open('tables_with_attributes.txt', encoding='utf-8') as fx:
         data2 = json.load(fx)
 
+    data = jsonify(data)
     return foo(data,data2)
     #return data
 
