@@ -333,8 +333,8 @@ def generate_query():
         text_file.write(data)
         text_file.close()
 
-    with open('tables_with_attributes.txt', encoding='utf-8') as fx:
-        data2 = json.load(fx)
+    #with open('tables_with_attributes.txt', encoding='utf-8') as fx:
+    #    data2 = json.load(fx)
 
     data = jsonify(data)
     return foo(data,data2)
