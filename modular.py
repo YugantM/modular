@@ -316,12 +316,12 @@ def generate_query():
     #print(request)
 
     # API endpoint will be here
-    link = "localhost:5001/sql_generate"
+    link = "localhost:3000/tables_with_attributes"
 
 
     with urllib.request.urlopen(link) as url:
-        data2 = url.read()
-        #data2 = json.loads(url.read().decode())
+        #data2 = url.read()
+        data2 = json.loads(url.read().decode())
 
     #return data2
                 
