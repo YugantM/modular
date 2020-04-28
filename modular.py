@@ -62,7 +62,7 @@ def foo(data,data2):
     with open('output.json', encoding='utf-8') as fx:
         data = json.load(fx)
 
-    data = data['jsondata']
+    data = data['jsondata'][0]
 #    print(data)
 
     #defining columns
@@ -316,12 +316,12 @@ def generate_query():
     #print(request)
 
     # API endpoint will be here
-    link = "localhost:3000/tables_with_attributes"
+    #link = "localhost:3000/tables_with_attributes"
 
 
-    with urllib.request.urlopen(link) as url:
-        #data2 = url.read()
-        data2 = json.loads(url.read().decode())
+    #with urllib.request.urlopen(link) as url:
+    #    #data2 = url.read()
+    #    data2 = json.loads(url.read().decode())
 
     #return data2
                 
@@ -333,8 +333,8 @@ def generate_query():
         text_file.write(data)
         text_file.close()
 
-    #with open('tables_with_attributes.txt', encoding='utf-8') as fx:
-    #    data2 = json.load(fx)
+    with open('tables_with_attributes.txt', encoding='utf-8') as fx:
+        data2 = json.load(fx)
 
     data = jsonify(data)
     return foo(data,data2)
